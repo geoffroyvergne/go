@@ -1,0 +1,18 @@
+
+#Add in .bash_profile
+export GOROOT=/usr/local/Cellar/go/1.10.1/libexec
+export GOPATH=/Users/<user>/dev/go
+export GOBIN=/Users/<user>/dev/go/bin
+
+#GO commands : 
+go run test.go
+go install ./src/testapp/testlib/
+go build -o ./bin/testapp ./src/testapp
+./bin/testapp
+
+#SH : 
+./build.sh
+
+#Make : 
+make -s
+make clean compile run
