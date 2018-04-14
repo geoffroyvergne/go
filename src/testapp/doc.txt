@@ -5,7 +5,7 @@ export GOPATH=/Users/<user>/dev/go
 export GOBIN=/Users/<user>/dev/go/bin
 
 #GO commands : 
-go run test.go
+go run ./src/testapp/*.go
 go install ./src/testapp/testlib/
 go build -o ./bin/testapp ./src/testapp
 ./bin/testapp

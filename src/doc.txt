@@ -1,0 +1,18 @@
+
+# .bash_profil
+export GOPATH=/Users/<user>/dev/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+
+# install all needed dependencies in src
+go get -d ./.
+
+# Cobra
+go get github.com/spf13/cobra/cobra
+cobra init cobraApp
+go run main.go
+
+# Dep
+dep init
+dep ensure -add github.com/pkg/errors
