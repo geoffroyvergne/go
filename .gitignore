@@ -3,4 +3,4 @@
 .vscode
 bin
 pkg
-*/vendor
+src/*/vendor
