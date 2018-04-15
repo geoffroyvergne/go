@@ -4,3 +4,5 @@
 bin
 pkg
 src/*/vendor
+github.com
+golang.org
