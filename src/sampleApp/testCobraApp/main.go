@@ -14,7 +14,10 @@
 
 package main
 
-import "sampleApp/testCobraApp/cmd"
+import (
+	"sampleApp/testCobraApp/cmd"
+	// "gopkg.in/yaml.v2"
+)
 
 func main() {
 	cmd.Execute()

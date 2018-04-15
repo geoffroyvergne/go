@@ -5,6 +5,7 @@ GOCLEAN=$(GOCMD) clean
 GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 GORUN=$(GOCMD) run
+PROJECT_NAME=sampleApp
 BINARY_NAME=testapp
 
 all: clean compile exec
@@ -13,7 +14,7 @@ print:
 compile: 
 	@echo "***** $@ $(BINARY_NAME) *****"
 	cd $(GOPATH) && \
-	$(GOBUILD) -o $(GOBIN)/$(BINARY_NAME) ./src/$(BINARY_NAME)
+	$(GOBUILD) -o $(GOBIN)/$(BINARY_NAME) ./src/$(PROJECT_NAME)/$(BINARY_NAME)
 test: 
 	@echo "***** $@ $(BINARY_NAME) *****"
 clean: 	
@@ -25,4 +26,4 @@ exec:
 	$(GOBIN)/$(BINARY_NAME)
 run:
 	@echo "***** $@ $(BINARY_NAME) *****"
-	cd $(GOPATH) && $(GORUN) ./src/$(BINARY_NAME)/*.go
+	cd $(GOPATH) && $(GORUN) ./src/$(PROJECT_NAME)/$(BINARY_NAME)/*.go

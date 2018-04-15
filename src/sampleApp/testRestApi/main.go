@@ -1,7 +1,7 @@
 package main
 
-import restapi "testRestApi/facades"
+import restapi "sampleApp/testRestApi/facades"
 
 func main() {
-	restapi.Init("api", ":3000")
+	restapi.Init("api", "localhost:3000")
 }

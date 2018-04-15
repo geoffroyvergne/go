@@ -16,6 +16,7 @@ func add(x, y int) int {
 }
 
 func main() {
+	lib.TestYaml()
 	fmt.Println(extLib.GetExternalValue())
 	fmt.Println(lib.GetLocalValue())
 
