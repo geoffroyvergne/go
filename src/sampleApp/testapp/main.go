@@ -6,7 +6,7 @@ import (
 	"math"
 	"math/rand"
 	"time"
-	extLib "sampleApp/testlib"
+	extLib "sampleApp/testlib/lib"
 	lib "sampleApp/testapp/lib"
 )
 
@@ -18,6 +18,10 @@ func add(x, y int) int {
 func main() {
 	fmt.Println(extLib.GetExternalValue())
 	fmt.Println(lib.GetLocalValue())
+
+	log.SetFlags(1)
+	log.Println(extLib.GetExternalValue())
+	log.Println(lib.GetLocalValue())
 
 	i := 0
 

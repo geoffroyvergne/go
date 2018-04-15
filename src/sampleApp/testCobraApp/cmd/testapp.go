@@ -15,7 +15,8 @@
 package cmd
 
 import (
-	"fmt"
+	// "fmt"
+	"log"
 	"github.com/spf13/cobra"
 	testapplib "sampleApp/testapp/lib"
 )
@@ -26,7 +27,10 @@ var testappCmd = &cobra.Command{
 	Short: "TestApp Launcher",
 	Long: `Launch the test app for example`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("testapp called " + testapplib.GetLocalValue())
+		// fmt.Println("testapp called " + testapplib.GetLocalValue())
+
+		log.SetFlags(1)
+		log.Println("testapp called " + testapplib.GetLocalValue())
 	},
 }
 

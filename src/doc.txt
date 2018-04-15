@@ -10,7 +10,7 @@ go get -d ./.
 
 # Cobra
 go get github.com/spf13/cobra/cobra
-cobra init cobraApp
+cobra init testCobraApp
 
 cobra add serve
 cobra add config
