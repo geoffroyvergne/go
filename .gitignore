@@ -3,6 +3,6 @@
 .vscode
 bin
 pkg
-src/*/vendor
+src/**/vendor
 github.com
 golang.org
