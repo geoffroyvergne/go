@@ -3,7 +3,7 @@ package facades
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	testapplib "testapp/lib"
+	testapplib "sampleApp/testapp/lib"
 )
 
 // Init rest API

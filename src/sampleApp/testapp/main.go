@@ -6,8 +6,8 @@ import (
 	"math"
 	"math/rand"
 	"time"
-	extLib "testlib"
-	lib "testapp/lib"
+	extLib "sampleApp/testlib"
+	lib "sampleApp/testapp/lib"
 )
 
 

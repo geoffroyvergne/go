@@ -16,28 +16,20 @@ package cmd
 
 import (
 	"fmt"
-	// "strings"
 	"github.com/spf13/cobra"
-	restapi "testRestApi/facades"
+	testapplib "sampleApp/testapp/lib"
 )
 
-// serveCmd represents the serve command
-var serveCmd = &cobra.Command{
-	Use:   "serve",
-	Short: "Start the REST API",
-	Long: `Start and serve the REST API`,
-	Run: func(cmd *cobra.Command, args []string) {		
-		prefix := cmd.Flag("prefix").Value.String()
-		host := cmd.Flag("host").Value.String()
-		fmt.Printf("serve called %v %v \n", prefix, host)
-
-		restapi.Init(prefix, host)
+// testappCmd represents the testapp command
+var testappCmd = &cobra.Command{
+	Use:   "testapp",
+	Short: "TestApp Launcher",
+	Long: `Launch the test app for example`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("testapp called " + testapplib.GetLocalValue())
 	},
 }
 
 func init() {
-	rootCmd.AddCommand(serveCmd)
-
-	serveCmd.Flags().StringP("prefix", "", "", "API prefix ex : api")
-	serveCmd.Flags().StringP("host", "", "", "host:port ex : :3000")
+	rootCmd.AddCommand(testappCmd)
 }

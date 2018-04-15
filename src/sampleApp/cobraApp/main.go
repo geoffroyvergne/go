@@ -14,7 +14,7 @@
 
 package main
 
-import "cobraApp/cmd"
+import "sampleApp/cobraApp/cmd"
 
 func main() {
 	cmd.Execute()
