@@ -11,6 +11,11 @@ go get -d ./.
 # Cobra
 go get github.com/spf13/cobra/cobra
 cobra init cobraApp
+
+cobra add serve
+cobra add config
+cobra add create -p 'configCmd'
+
 go run main.go
 
 # Dep

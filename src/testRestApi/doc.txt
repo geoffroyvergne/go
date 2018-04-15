@@ -1,0 +1,9 @@
+
+dep init
+dep ensure --add github.com/gin-gonic/gin
+go run main.go
+
+# CLI run
+go run cobraApp/main.go serve --prefix api --host :3000
+
+curl localhost:8080/api/ping
