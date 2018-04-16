@@ -5,9 +5,9 @@ GOTEST=$(GOCMD) test
 GOGET=$(GOCMD) get
 GORUN=$(GOCMD) run
 PROJECT_NAME=sampleApp
-BINARY_NAME=testapp
+BINARY_NAME=testCobraApp
 
-all: clean compile exec
+all: clean compile
 print:
 	@echo "***** $@ $(BINARY_NAME) *****"
 compile: 
