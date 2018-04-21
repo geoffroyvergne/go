@@ -4,22 +4,39 @@ import(
 	"fmt"
 	"net"
 	"bufio"
+	"log"
 	"os"
+	"time"
 )
 
 // TCPClient TCP Client
-func TCPClient(host string) {
+func TCPClient(host string, text string, timeout time.Duration) {
 
-	fmt.Println("Conected to " + host)
+	if text == "" {
+		fmt.Println("text requiered")
+		os.Exit(0)
+	}
 
-	conn, _ := net.Dial("tcp", host)
+	conn, _ := net.DialTimeout("tcp", host, timeout *time.Second)
 
-	for { 
-		reader := bufio.NewReader(os.Stdin)
-		fmt.Print("Text to send: ")
-		text, _ := reader.ReadString('\n')
-		fmt.Fprintf(conn, text + "\n")
-		message, _ := bufio.NewReader(conn).ReadString('\n')
-		fmt.Print("Message from server: "+message)
-	  }
+	handleRequest(conn, text)
+	
+	//os.Exit(0)
+}
+
+func handleRequest(conn net.Conn, text string) {
+	//defer conn.Close()
+	
+	//reader := bufio.NewReader(os.Stdin)
+	//fmt.Print("Text to send: ")
+	//text, _ := reader.ReadString('\n')
+
+	//conn.Write([]byte(text))
+	//bufio.NewWriter(conn).Write([]byte(text))
+
+	fmt.Fprintf(conn, text + "\n")
+	message, _, _ := bufio.NewReader(conn).ReadLine()
+	log.Println("Message from server: " + string(message))
+
+	conn.Close()
 }

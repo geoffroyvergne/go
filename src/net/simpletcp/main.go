@@ -2,8 +2,8 @@ package main
 
 import(
 	"flag"
-	"fmt"
 	"os"
+	"log"
 	client "net/simpletcp/client"
 	server "net/simpletcp/server"
 )
@@ -11,21 +11,23 @@ import(
 func main() {
 	tcpType := flag.String("t", "", "type : client or server")
 	host := flag.String("h", "localhost:8000", "host:port ex : localhost:8000")
+	text := flag.String("m", "", "message to send")
 
 	flag.Parse()
 
-	if(*tcpType == "") {
-		fmt.Println("type requiered")
+	if *tcpType == "" {
+		log.Println("type requiered")
 		os.Exit(0)
 	}
 
-	fmt.Println("TCP main " + *tcpType)
+	log.Println("TCP main " + *tcpType)
 
-	if (*tcpType == "client") {
-		client.TCPClient(*host)
-	} else if (*tcpType == "server") {
+	if *tcpType == "client" {
+		client.TCPClient(*host, *text, 5)
+	} else if *tcpType == "server" {
 		server.TCPServer(*host)
 	} else {
-		fmt.Println("unknown tcp type " + *tcpType)
+		log.Println("unknown tcp type " + *tcpType)
+		os.Exit(0)
 	}
 }

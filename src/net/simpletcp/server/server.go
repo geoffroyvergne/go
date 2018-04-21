@@ -1,23 +1,66 @@
 package server
 
 import(
-	"fmt"
 	"net"
 	"bufio"
-	"strings"
+	"log"
+	//"os"
+	"io"
 )
 
 // TCPServer TCP Server
 func TCPServer(host string) {
-	fmt.Println("Launching server on " + host + "...")
+	log.Println("Launching server on " + host + "...")
 
-	ln, _ := net.Listen("tcp", host)
-	conn, _ := ln.Accept()
+	l, err := net.Listen("tcp", host)
+    if err != nil {
+        log.Fatal(err)
+    }
+	
+	defer l.Close()
+	
+    for {
+        conn, err := l.Accept()
+        if err != nil {
+            log.Fatal(err)
+        }        
+		
+		go handleRequest(conn)
+	}
+}
 
-	for {
-		message, _ := bufio.NewReader(conn).ReadString('\n')
-		fmt.Print("Message Received:", string(message))
-		newmessage := strings.ToUpper(message)
-		conn.Write([]byte(newmessage + "\n"))
-	  }
+func handleRequest(conn net.Conn) {
+
+	message, _, err := bufio.NewReader(conn).ReadLine()
+	messageStr := string(message)
+
+	if err != nil {
+		if err != io.EOF {
+			log.Printf("Error: %+v", err.Error())
+			return
+		}
+	}
+
+	if messageStr == "" {
+		return
+	}
+	
+	if messageStr == "quit" {
+		log.Println("quit command received. Bye.")
+		conn.Close()
+		
+		return
+	}
+
+	if messageStr == "ping" {
+		log.Println("ping command received.")
+		conn.Write([]byte("pong\n"))
+
+		return
+	}
+
+	log.Println("Message: " + messageStr)
+	
+	newmessage := messageStr + " from server \n"
+	conn.Write([]byte(newmessage))
 }

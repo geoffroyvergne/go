@@ -16,4 +16,8 @@ func main() {
 
 	log.Printf("Serving %s on : %s\n", *directory, *host)
 	log.Fatal(http.ListenAndServe(*host, nil))
+
+	//fs := http.FileServer(http.Dir(*directory))
+	//http.Handle("/", http.StripPrefix("/", fs))
+	//http.ListenAndServe(*host, nil)
 }
