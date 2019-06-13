@@ -21,3 +21,6 @@ go run main.go
 # Dep
 dep init
 dep ensure -add github.com/pkg/errors
+
+# upgrade all
+go get -u all

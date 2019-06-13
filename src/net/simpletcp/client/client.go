@@ -7,6 +7,7 @@ import(
 	"log"
 	"os"
 	"time"
+	//"io"
 )
 
 // TCPClient TCP Client
@@ -20,6 +21,7 @@ func TCPClient(host string, text string, timeout time.Duration) {
 	conn, _ := net.DialTimeout("tcp", host, timeout *time.Second)
 
 	handleRequest(conn, text)
+	defer conn.Close()
 	
 	//os.Exit(0)
 }
@@ -34,9 +36,11 @@ func handleRequest(conn net.Conn, text string) {
 	//conn.Write([]byte(text))
 	//bufio.NewWriter(conn).Write([]byte(text))
 
+	//io.WriteString(conn, text)
+
 	fmt.Fprintf(conn, text + "\n")
 	message, _, _ := bufio.NewReader(conn).ReadLine()
 	log.Println("Message from server: " + string(message))
 
-	conn.Close()
+	//conn.Close()
 }
