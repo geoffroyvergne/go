@@ -12,3 +12,10 @@ dep ensure --add github.com/gin-gonic/gin
 ```
 go run main.go
 ```
+
+## test
+
+````
+curl localhost:3000/api/debug/ping
+````
+
