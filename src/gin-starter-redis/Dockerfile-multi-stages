@@ -1,0 +1,15 @@
+FROM golang as build
+
+COPY . /go/src/gin-starter-redis
+WORKDIR /go/src/gin-starter-redis
+
+RUN go get -d ./.
+RUN go build -o app
+
+FROM cescoffier/native-base
+
+WORKDIR /app
+COPY --from=build /go/src/gin-starter-redis/app /app/
+
+EXPOSE 3000
+CMD ["./app"]
