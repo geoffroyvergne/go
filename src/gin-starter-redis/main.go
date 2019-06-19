@@ -30,7 +30,7 @@ func initAPI() {
 		apiPrefix = tmpAPIPrefix
 	}
 
-	apiHost := "localhost:3000"
+	apiHost := ":3000"
 	if tmpAPIHost := os.Getenv("API_HOST"); tmpAPIHost != "" {
 		apiHost = tmpAPIHost
 	}

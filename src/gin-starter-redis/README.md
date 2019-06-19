@@ -19,6 +19,18 @@ dep ensure --add github.com/go-redis/redis
 go run main.go
 ```
 
+## Docker
+
+```docker build -t gin-starter-redis .```
+
+```
+docker run --rm \
+    -p 3000:3000 \
+    --name gin-starter-redis \
+    -e REDIS_HOST=192.168.1.21:6379 \
+    gin-starter-redis
+```
+
 ## test
 
 ````
