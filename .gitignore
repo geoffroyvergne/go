@@ -5,4 +5,10 @@ bin
 pkg
 src/**/vendor
 github.com
+<<<<<<< HEAD
 golang.org
+=======
+golang.org
+**/.vagrant
+**/*.log
+>>>>>>> fc87aa7... updates
