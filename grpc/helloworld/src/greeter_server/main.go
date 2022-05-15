@@ -22,16 +22,17 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"net"
 
 	"google.golang.org/grpc"
-	pb "google.golang.org/grpc/examples/helloworld/helloworld"
+	//pb "google.golang.org/grpc/examples/helloworld/helloworld"
+	pb "example.com/go/grpc/helloworld/src/helloworld"
 )
 
 var (
-	port = flag.Int("port", 9000, "The server port")
+	//port = flag.Int("port", 9000, "The server port")
+	host = flag.String("host", "127.0.0.1:9000", "Host to listen")
 )
 
 // server is used to implement helloworld.GreeterServer.
@@ -47,7 +48,8 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 
 func main() {
 	flag.Parse()
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+	//lis, err := net.Listen("tcp", fmt.Sprintf("127.0.0.1:%d", *port))
+	lis, err := net.Listen("tcp", *host)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
