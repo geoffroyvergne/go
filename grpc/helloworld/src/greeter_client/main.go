@@ -37,14 +37,14 @@ const (
 )
 
 var (
-	addr = flag.String("addr", "localhost:9000", "the address to connect to")
+	host = flag.String("host", "localhost:9000", "the address to connect to")
 	name = flag.String("name", defaultName, "Name to greet")
 )
 
 func main() {
 	flag.Parse()
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(*addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(*host, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
